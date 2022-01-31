@@ -22,12 +22,11 @@ public class WalletTest {
     private Wallet emptyWallet;
     private Wallet walletWith100Dollars;
 
-    @BeforeAll
+    @BeforeAll // cette methode sapplique avant tous les tests comme une precondtion
     static void beforeAllTest() {
-        System.out.println("This method should run before all the tests");
-    }
+        System.out.println("This method should run before all the tests");}
 
-    @BeforeEach
+    @BeforeEach  // avant chaque test applique cette methode
     void setUp() {
         System.out.println("Creating some wallets for testing");
         emptyWallet = new Wallet();
@@ -42,12 +41,12 @@ public class WalletTest {
         System.out.printf("Destroying Wallets for testing, here is the proof: %s%n", emptyWallet);
     }
 
-    @AfterAll
+    @AfterAll // cette methode sapplique apres tous les tests comme une precondtion
     static void afterAllTests() {
         System.out.println("This method should run after all the tests");
     }
 
-    @Test
+    @Test // Verfier que le montant du depot est egale a la valeur ajouter
     public void testWalletDeposited1000() {
         emptyWallet.deposit(1000);
         assertThat(emptyWallet.getBalance()).isEqualTo(1000);
@@ -59,13 +58,13 @@ public class WalletTest {
         assertThat(emptyWallet.getBalance()).isZero();
     }
 
-    @Test
+    @Test  //verfier que le compte est deffirant du negatif pour commencer
     public void testWalletDepositOf1BalanceIs1() {
         emptyWallet.deposit(1);
         assertThat(emptyWallet.getBalance()).isOne();
     }
 
-    @Test
+    @Test // verifier que si depose une apres on retire la valeur les resultas est zero
     @DisplayName("If a deposit of one and withdrawal of the same amount the result should be 0")
     public void testWalletWithDepositOf1AndWithdrawalOf1() {
         emptyWallet.deposit(1);
