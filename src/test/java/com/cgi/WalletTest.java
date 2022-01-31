@@ -77,7 +77,7 @@ public class WalletTest {
         emptyWallet.deposit(1);
         assertThat(emptyWallet.getBalance()).isGreaterThan(0);
         emptyWallet.withdrawal(1);
-        assertThat(emptyWallet.getBalance()).isNegative();
+        assertThat(emptyWallet.getBalance()).isZero();
     }
 
     @Test
